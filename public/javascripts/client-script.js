@@ -3,7 +3,8 @@ socket.on('connect', () => {
    console.log('socket connection');
 });
 
-var username = '';
+let localCookie = document.cookie;
+var username = localCookie.split('=').pop();
 var mod = document.getElementsByClassName('modal')[0]
 var usernameDom = document.getElementById('username')
 
@@ -33,7 +34,8 @@ document.getElementById('button-addon2').addEventListener('click', (e) => {
  */
 document.getElementById('message-box').addEventListener('focus', () => {
    console.log('focus');
-   if (!username){
+   console.log(document.cookie);
+   if (!username) {
       mod.style.display = 'block';
       usernameDom.focus();
    }
@@ -44,14 +46,16 @@ document.getElementById('message-box').addEventListener('focus', () => {
  * for save username
  */
 document.getElementById('modal_save').addEventListener('click', () => {
+   let cookieTime = new Date() + 60 * 60 * 1000;
    if (usernameDom.value)
       mod.style.display = 'none';
    username = usernameDom.value;
+   document.cookie = 'username='+usernameDom.value;
    console.log('save click  ', username);
 })
 
 
-socket.on('chat_receive', (chat_rec)=>{
+socket.on('chat_receive', (chat_rec) => {
    push(chat_rec);
 });
 
