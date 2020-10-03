@@ -1,8 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #80b7ff;
 }
 
-a {
-  color: #00B7FF;
+.wrap{
+  background: #00000013;
+  border: 1px solid #0f0f0f8f;
+  border-radius: 20px;
+  padding: 5px 20px;
 }
