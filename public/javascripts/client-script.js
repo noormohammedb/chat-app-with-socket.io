@@ -63,6 +63,6 @@ let push = (data) => {
    ele.innerHTML = `
                   <h5 class="display-6" id="chat-username">${data.username}</h5>
                   <p class="lead" id="chat-message">${data.message}</p>
-                  <p> time {{time}} </p>`
+                  <p> ${data.time} </p>`
    con.prepend(ele)
 }
