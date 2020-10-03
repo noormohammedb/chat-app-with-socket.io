@@ -12,5 +12,6 @@ body {
   background: #00000013;
   border: 1px solid #0f0f0f8f;
   border-radius: 20px;
+  margin: 3px 1px;
   padding: 5px 20px;
 }

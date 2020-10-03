@@ -9,18 +9,20 @@
          <div class="jumbotron w-75">
 
             <div class="input-group mb-3">
-               <input type="text" class="form-control" placeholder="Type Your Message"
-                  aria-label="Recipient's username" aria-describedby="button-addon2" id="message-box">
+               <input type="text" class="form-control" placeholder="Type Your Message" aria-label="Recipient's username"
+                  aria-describedby="button-addon2" id="message-box">
                <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
                </div>
             </div>
 
 
-            <div class="wrap">
-            <h5 class="display-6" id="chat-username">username {{username}} </h5>
-            <p class="lead" id="chat-message">featured content or information. {{message}} </p>
-            <p> time {{time}} </p>
+            <div class="message-container" id="message-container">
+               <div class="wrap" >
+                  <h5 class="display-6" id="chat-username">username {{username}} </h5>
+                  <p class="lead" id="chat-message">featured content or information. {{message}} </p>
+                  <p> time {{time}} </p>
+               </div>
             </div>
 
             {{!-- <hr class="my-4"> --}}
@@ -29,4 +31,4 @@
    </div>
 </div>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/javascripts/client-script.js"></script>
+<script src="/javascripts/client-script.js" defer></script>
