@@ -11,7 +11,7 @@ const usernameDom = document.getElementById("username");
 /*
  * for send message and refocus to message box
  */
-document.getElementById("button-addon2").addEventListener("click", (e) => {
+document.getElementById("send-form").addEventListener("submit", (e) => {
   e.preventDefault();
   userMessage = document.getElementById("message-box");
   console.log("clicked  ", userMessage.value);
@@ -41,13 +41,17 @@ document.getElementById("message-box").addEventListener("focus", () => {
 /*
  * for save username
  */
-document.getElementById("modal_save").addEventListener("click", () => {
+const setUserName = (e) => {
+  e.preventDefault();
   let cookieTime = new Date() + 60 * 60 * 1000;
   if (usernameDom.value) mod.style.display = "none";
   username = usernameDom.value;
   document.cookie = "username=" + usernameDom.value;
   console.log("save click  ", username);
-});
+};
+
+document.getElementById("modal_save").addEventListener("click", setUserName);
+document.getElementById("name-form").addEventListener("submit", setUserName);
 
 socket.on("chat_receive", (chat_rec) => {
   push(chat_rec);

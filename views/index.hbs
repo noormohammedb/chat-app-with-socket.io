@@ -2,12 +2,13 @@
   <!-- Vertically centered modal -->
   <div class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+      <form class="modal-content" id="name-form">
         <div class="modal-header">
           <h5 class="modal-title">Enter Your Name</h5>
           <button
             type="button"
             class="close"
+            id="close-user-name"
             data-dismiss="modal"
             aria-label="Close"
           >
@@ -24,10 +25,10 @@
           />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="modal_save">Save
+          <button type="submit" class="btn btn-primary" id="modal_save">Save
             changes</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <div class="row">
@@ -39,7 +40,7 @@
     <div class="col d-flex justify-content-center">
       <div class="jumbotron w-75">
 
-        <div class="input-group mb-3">
+        <form class="input-group mb-3" id="send-form">
           <input
             type="text"
             class="form-control"
@@ -51,11 +52,11 @@
           <div class="input-group-append">
             <button
               class="btn btn-outline-secondary"
-              type="button"
+              type="submit"
               id="button-addon2"
             >Send</button>
           </div>
-        </div>
+        </form>
 
         <div class="message-container" id="message-container">
           {{!-- <div class="wrap" >
