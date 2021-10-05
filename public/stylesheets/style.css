@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,14 +7,14 @@ body {
   min-height: 100vh;
   background-color: #80b7ff;
 }
-.wrap{
+.wrap {
   background: #00000013;
   border: 1px solid #0f0f0f8f;
   border-radius: 20px;
   margin: 3px 1px;
   padding: 5px 20px;
 }
-.message-container{
+.message-container {
   max-height: 70vh;
   overflow-y: scroll;
 }
