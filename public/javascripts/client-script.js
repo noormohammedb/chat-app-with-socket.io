@@ -62,9 +62,27 @@ let push = (data) => {
   console.log(data);
   const ele = document.createElement("div");
   ele.classList = "wrap";
-  ele.innerHTML = `
-                  <h5 class="display-6" id="chat-username">${data.username}</h5>
-                  <p class="lead" id="chat-message">${data.message}</p>
-                  <p> ${data.time} </p>`;
+
+  const heading5 = document.createElement("h5")
+  heading5.className = "display-6"
+  heading5.id = "chat-username"
+  heading5.innerText = data.username
+
+  const paraMesg = document.createElement("p")
+  paraMesg.className = "lead"
+  paraMesg.id = "chat-message"
+  paraMesg.innerText = data.message
+
+  const paraTime = document.createElement("p")
+  paraTime.innerText = data.time
+
+  ele.appendChild(heading5)
+  ele.appendChild(paraMesg)
+  ele.appendChild(paraTime)
+
+  // ele.innerHTML = `
+  //                 <h5 class="display-6" id="chat-username">${data.username}</h5>
+  //                 <p class="lead" id="chat-message">${data.message}</p>
+  //                 <p> ${data.time} </p>`;
   con.prepend(ele);
 };
