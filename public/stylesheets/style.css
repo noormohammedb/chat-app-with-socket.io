@@ -18,3 +18,7 @@ body {
   max-height: 70vh;
   overflow-y: scroll;
 }
+#message-box {
+  height: 3rem;
+  resize: none;
+}
