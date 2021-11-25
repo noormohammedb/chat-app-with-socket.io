@@ -11,21 +11,25 @@ const usernameDom = document.getElementById("username");
 /*
  * for send message and refocus to message box
  */
-document.getElementById("send-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  userMessage = document.getElementById("message-box");
-  console.log("clicked  ", userMessage.value);
-  if (userMessage.value) {
+const userMessageBox = document.getElementById("message-box");
+const submitFunction = () => {
+  console.log("clicked  ", userMessageBox.value);
+  if (userMessageBox.value) {
     let timeNow = new Date();
     socketObject = {
       username: username,
-      message: userMessage.value,
+      message: userMessageBox.value,
       time: `${timeNow.getHours()}:${timeNow.getMinutes()}:${timeNow.getSeconds()}`,
     };
     socket.emit("chat_send", socketObject);
   }
-  userMessage.value = "";
-  userMessage.focus();
+  userMessageBox.value = "";
+  userMessageBox.focus();
+}
+const form = document.getElementById("send-form")
+form.addEventListener("submit", (subEv) => {
+  subEv.preventDefault();
+  submitFunction()
 });
 
 /*
@@ -33,10 +37,29 @@ document.getElementById("send-form").addEventListener("submit", (e) => {
  */
 document.getElementById("message-box").addEventListener("focus", () => {
   if (!username) {
+    // console.log("modal block");
     mod.style.display = "block";
     usernameDom.focus();
   }
 });
+
+/*
+ * execute form submission on new line character
+ */
+document.getElementById("message-box").addEventListener("input", (inputEvent) => {
+  // console.log(inputEvent);
+  // console.log(`value length : ${userMessageBox.value.length}`);
+  if (inputEvent.inputType == "insertLineBreak") {
+    // console.log("line break");
+    textboxEvent = inputEvent
+    if (userMessageBox.value == '\n') {
+      // console.log("new line detected");
+      userMessageBox.value = userMessageBox.value.slice(0, -1)
+    } else if (userMessageBox.value.length > 1) {
+      submitFunction()
+    }
+  }
+})
 
 /*
  * for save username
@@ -44,10 +67,14 @@ document.getElementById("message-box").addEventListener("focus", () => {
 const setUserName = (e) => {
   e.preventDefault();
   let cookieTime = new Date() + 60 * 60 * 1000;
-  if (usernameDom.value) mod.style.display = "none";
   username = usernameDom.value;
   document.cookie = "username=" + usernameDom.value;
   console.log("save click  ", username);
+  if (usernameDom.value) {
+    mod.style.display = "none";
+    // console.log("modal trigger");
+    userMessageBox.focus();
+  }
 };
 
 document.getElementById("modal_save").addEventListener("click", setUserName);
